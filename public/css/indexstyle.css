@@ -1,0 +1,158 @@
+:root { --brand-bg: #DEE9FF; }
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--brand-bg);
+    min-height: 100vh;
+    position: relative;
+}
+.background-ellipse {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    opacity: 0.9;
+    z-index: 0;
+    background-image: url('/img/Ellipse 1.png');
+    background-repeat: no-repeat;
+    background-size: 1000px 620px;
+    background-position: right 0px top -50px;
+}
+.main-content { position: relative; z-index: 1; }
+.navbar-brand img { width: 56px; height: auto; }
+.hero {
+    /* padding-top: 2rem; */
+    padding-bottom: 4rem;
+}
+.cardContent {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.style_btn{
+background-color: #fff !important;
+border-radius: 50px;
+padding: 10px 20px;
+color: #000;
+font-weight: bold;
+}
+.cta-btn {
+    background-color: #2F66F5;
+    color: #fff;
+    border-radius: 12px;
+    padding: 12px 22px;
+}
+.photo img { max-width: 100%; height: auto; }
+
+/* Start Section Styles */
+.start-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    height: 100%;
+}
+.start-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+}
+.icon-circle {
+    width: 80px;
+    height: 80px;
+    background: #2F66F5;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+.icon-circle i {
+    font-size: 2rem;
+    color: #fff;
+}
+
+/* About Section Styles */
+.about-card {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+.services-list {
+    list-style: none;
+    padding: 0;
+}
+.services-list li {
+    padding: 8px 0;
+    position: relative;
+    padding-right: 25px;
+}
+.services-list li:before {
+    content: "✓";
+    position: absolute;
+    right: 0;
+    top: 8px;
+    color: #2F66F5;
+    font-weight: bold;
+}
+
+.about-card {
+background-color: #fff;
+border-radius: 20px;
+box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.aboutSection {
+position: relative;
+overflow: hidden;
+background-color: #f8f9fa; /* لون خلفية خفيف */
+}
+
+.aboutSection::before,
+.aboutSection::after {
+content: '';
+position: absolute;
+background-color: #007bff;
+border-radius: 50%;
+opacity: 0.2;
+}
+
+/* الدوائر الزرقاء على اليسار */
+.aboutSection::before {
+top: 10%;
+left: -50px;
+width: 100px;
+height: 100px;
+background-color: #007bff;
+}
+
+.aboutSection::after {
+top: 50%;
+left: -30px;
+width: 60px;
+height: 60px;
+background-color: #007bff;
+}
+
+/* الدوائر الزرقاء على اليمين */
+.aboutSection .container::before {
+content: '';
+position: absolute;
+top: 20%;
+right: -70px;
+width: 140px;
+height: 140px;
+background-color: #007bff;
+border-radius: 50%;
+opacity: 0.2;
+}
+
+.aboutSection .container::after {
+content: '';
+position: absolute;
+top: 70%;
+right: -40px;
+width: 80px;
+height: 80px;
+background-color: #007bff;
+border-radius: 50%;
+opacity: 0.2;
+}
