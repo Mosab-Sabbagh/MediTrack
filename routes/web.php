@@ -51,14 +51,14 @@ Route::get('/forgot-password', action: function () {
 
 Route::get('/doctor', function () {
     return view('doctor.index');
-})->name('doctor');
+})->middleware(['auth','doctor'])->name('doctor');
 
 
 Route::get('/sick', function () {
     return view('sick.index');
-})->name('sick');
+})->middleware(['auth','sick'])->name('sick');
 
 
 Route::get('/pharmaceutical', function () {
     return view('pharmaceutical.index');
-})->name('pharmaceutical');
+})->middleware(['auth','pharmaceutical'])->name('pharmaceutical');
