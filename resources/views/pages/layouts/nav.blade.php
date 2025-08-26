@@ -18,18 +18,46 @@
                 <li class="nav-item ms-3 "><a class="nav-link" style="color: #1364FF;"
                         href="{{route('connect_us')}}">تواصل معنا</a></li>
             </ul>
-            <div class="d-flex">
-                <div class="dropdown">
-                    <button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
-                        aria-expanded="false">
-                        تسجيل الدخول
-                    </button>
-                    <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="{{route('login')}}">تسجيل الدخول</a></li>
-                        <li><a class="dropdown-item" href="#">إنشاء حساب</a></li>
-                    </ul>
+            @auth
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#">الملف الشخصي</a></li>
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method="POST" action="{{ route('logout') }}">
+                                    @csrf
+                                    <button class="dropdown-item" type="submit">
+                                        تسجيل الخروج
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-            </div>
+            @endauth
+
+            @guest
+                <div class="d-flex">
+                    <div class="dropdown">
+                        <button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            تسجيل الدخول
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{{ route('login') }}">تسجيل الدخول</a></li>
+                            <li><a class="dropdown-item" href="#">إنشاء حساب</a></li>
+                        </ul>
+                    </div>
+                </div>
+            @endguest
+
         </div>
     </div>
 </nav>

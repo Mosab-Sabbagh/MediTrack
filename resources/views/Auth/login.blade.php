@@ -16,27 +16,42 @@
             </div>
 
             <!-- الفورم -->
-            <form>
+            <form action="{{route('login')}}" method="POST">
+                @csrf
                 <div class="mb-3">
                     <label class="form-label">اسم المستخدم</label>
                     <div class="input-group">
-                        <input type="email" class="form-control" placeholder="ادخل بريدك الإلكتروني">
+                        <input type="email" name="email" value="{{ old('email') }}" class="form-control"
+                            placeholder="ادخل بريدك الإلكتروني">
                     </div>
+                    @error('email')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-2">
                     <label class="form-label">كلمة المرور</label>
                     <div class="input-group">
-                        <input type="password" class="form-control" placeholder="ادخل كلمة المرور الخاصة بك">
+                        <input type="password" name="password" class="form-control"
+                            placeholder="ادخل كلمة المرور الخاصة بك">
                     </div>
+                    @error('password')
+                        <div class="text-danger small mt-1">{{ $message }}</div>
+                    @enderror
                 </div>
 
                 <div class="mb-3 text-end">
                     <a href="reset.html" class="text-danger small">هل نسيت كلمة المرور؟</a>
                 </div>
 
+                {{-- لو في خطأ عام (مثلاً بيانات الدخول غلط) --}}
+                @if($errors->has('email'))
+                    <div class="alert alert-danger small">{{ $errors->first('email') }}</div>
+                @endif
+
                 <button type="submit" class="btn btn-primary w-100 rounded-pill">تسجيل</button>
             </form>
+
         </div>
     </div>
 @endsection
