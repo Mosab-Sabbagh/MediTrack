@@ -22,6 +22,11 @@
 
     <div class="main-content">
         @include('pages.layouts.nav')
+
+        <div class="container" style="width: 700px;">
+            @include('pages.alert')
+        </div>
+
         @yield('content')
     </div>
 
