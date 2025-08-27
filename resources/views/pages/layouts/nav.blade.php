@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg bg-transparent pt-3 ">
     <div class="container">
         <div class="logo-responce">
-            <a class="navbar-brand" href="{{route('home')}}"><img src="img/logo.png" alt="MediTrack"></a>
+            <a class="navbar-brand" href="{{route('home')}}"><img src="{{asset('img/logo.png')}}" alt="MediTrack"></a>
         </div>
 
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#nav">

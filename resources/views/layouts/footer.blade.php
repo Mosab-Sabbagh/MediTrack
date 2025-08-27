@@ -1,13 +1,13 @@
 <footer class="footer py-5 position-relative overflow-hidden">
-	<img src="img/Ellipse 2.png" alt="Ellipse" class="img-fluid footer-bg-right">
-	<img src="img/Ellipse 3.png" alt="Ellipse" class="img-fluid footer-bg-left">
+	<img src="{{asset('img/Ellipse 2.png')}}" alt="Ellipse" class="img-fluid footer-bg-right">
+	<img src="{{asset('img/Ellipse 3.png')}}" alt="Ellipse" class="img-fluid footer-bg-left">
 
 	<div class="container position-relative">
 		<div class="row d-flex justify-content-between align-items-center text-center text-md-end">
 
 			<!-- اللوجو -->
 			<div class="col-md-4 mb-4 d-flex flex-column align-items-center align-items-md-end footer-section">
-				<img src="img/logo.png" alt="MediTrack Logo" class="img-fluid footer-logo mb-3" style="width: 100px;">
+				<img src="{{asset('img/logo.png')}}" alt="MediTrack Logo" class="img-fluid footer-logo mb-3" style="width: 100px;">
 			</div>
 
 			<!-- روابط مختصرة -->
