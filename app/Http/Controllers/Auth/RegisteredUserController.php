@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Models\Doctor;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -16,7 +17,7 @@ class RegisteredUserController extends Controller
 
     public function store(Request $request)
     {
-        // dd($request->all());
+        // dd( $request->all());
         // Validate the incoming request data
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
@@ -35,10 +36,22 @@ class RegisteredUserController extends Controller
             'user_type' => $request->user_type,
         ]);
 
+        // إذا كان user_type = doctor → أنشئ سجل جديد في جدول doctors
+        if ($user->user_type === 'doctor') {
+            Doctor::create([
+                'user_id' => $user->id,
+                'specialization' => null,
+                'license_number' => null,
+                'working_hours' => null,
+                'phone' => null,
+                'section' => null,
+            ]);
+        }
+
         // Log the user in
         Auth::login($user);
 
         // Redirect to a desired location, e.g., home page
-        return redirect()->route('home');
+        return redirect()->route('login');
     }
 }

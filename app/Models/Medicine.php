@@ -14,6 +14,13 @@ class Medicine extends Model
         'status',
     ];
 
+    public function patients()
+    {
+        return $this->belongsToMany(Patient::class, 'medicine_patient')
+                    ->withPivot('doctor_id', 'diagnosis', 'notes', 'prescribed_at')
+                    ->withTimestamps();
+    }
+
 
 
 }

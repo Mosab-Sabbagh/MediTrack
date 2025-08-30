@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedController;
+use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 
 
@@ -76,3 +77,20 @@ Route::resource('medicines', MedicineController::class)->middleware(['auth','pha
 // destroy name => medicines.destroy | method : Delete | url => /medicines/{medicine}
 
 Route::get('/medications', [MedicineController::class, 'medications'])->middleware(['auth','pharmaceutical'])->name('medications');
+
+
+Route::get('/doctor/medications', [DoctorController::class, 'medications'])->middleware(['auth','doctor'])->name('doctor.medications');
+Route::get('/patients', [DoctorController::class, 'patients'])->middleware(['auth','doctor'])->name('doctor.patients');
+Route::get('/patients/create', [DoctorController::class, 'create'])->middleware(['auth','doctor'])->name('doctor.patients.create');
+Route::get('/patients/{patient}', [DoctorController::class, 'patientShow'])->name('doctor.patients.show');
+Route::post('/doctor/patients', [DoctorController::class, 'storePatient'])
+    ->name('doctor.patients.store');
+Route::get('/doctor/patients/{patient}/create-visit', [DoctorController::class, 'createVisit'])->name('doctor.visit.create');
+Route::post('/doctor/patients/{patient}/create-visit', [DoctorController::class, 'storeVisit'])->name('doctor.visit.store');
+
+Route::get('/doctor/patients/{patient}/prescribe', [DoctorController::class, 'createPrescribe'])->name('doctor.prescribe.create');
+
+Route::post('/doctor/patients/{patient}/prescribe', [DoctorController::class, 'prescribe'])->name('doctor.prescribe');
+
+
+Route::resource('doctor', DoctorController::class)->middleware(['auth','doctor']);
