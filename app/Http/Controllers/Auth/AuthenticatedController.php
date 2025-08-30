@@ -26,7 +26,7 @@ class AuthenticatedController extends Controller
             $user = Auth::user();
 
             if ($user->user_type === 'doctor') {
-                return redirect()->route('doctor');
+                return redirect()->route('doctor.index');
             } elseif ($user->user_type === 'sick') {
                 return redirect()->route('sick');
             } elseif ($user->user_type === 'pharmaceutical') {
