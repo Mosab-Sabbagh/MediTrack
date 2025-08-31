@@ -7,12 +7,12 @@ use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
 
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
+
 Route::get('/', function () {
-    return view('welcome');
-});
-
-
-Route::get('/home', function () {
     return view('home.index');
 })->name('home');
 
@@ -57,10 +57,11 @@ Route::get('/doctor', function () {
 })->middleware(['auth','doctor'])->name('doctor');
 
 
-Route::get('/sick', function () {
-    return view('sick.index');
-})->middleware(['auth','sick'])->name('sick');
+// Route::get('/sick', function () {
+//     return view('sick.index');
+// })->middleware(['auth','sick'])->name('sick');
 
+Route::get('/sick', [App\Http\Controllers\SickController::class, 'index'])->middleware(['auth','sick'])->name('sick');
 
 Route::get('/pharmaceutical', function () {
     return view('pharmaceutical.index');

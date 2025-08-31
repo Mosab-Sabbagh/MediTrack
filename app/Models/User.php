@@ -51,4 +51,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Doctor::class);
     }
+
+    // Define relationship to Patient
+    public function patient()
+    {
+        return $this->hasOne(Patient::class);
+    }
 }

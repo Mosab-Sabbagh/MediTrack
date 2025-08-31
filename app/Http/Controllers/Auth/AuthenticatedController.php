@@ -50,6 +50,6 @@ class AuthenticatedController extends Controller
 
         $request->session()->regenerateToken();
 
-        return redirect('/home');
+        return redirect('/');
     }
 }
