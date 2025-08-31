@@ -12,7 +12,7 @@ class Patient extends Model
         'gender',
         'user_id',
         'phone',
-        'id_number', 
+        'id_number',
     ];
     public function user()
     {
@@ -28,26 +28,30 @@ class Patient extends Model
     public function medicines()
     {
         return $this->belongsToMany(Medicine::class, 'medicine_patient')
-                ->withPivot('doctor_id', 'diagnosis', 'notes', 'prescribed_at')
-                ->withTimestamps();
+            ->withPivot('doctor_id', 'diagnosis', 'notes', 'prescribed_at')
+            ->withTimestamps();
     }
 
-// app/Models/Patient.php
 
-public function getAgeAttribute()
-{
-    // التحقق من وجود تاريخ الميلاد
-    if (is_null($this->date_of_birth)) {
-        return '—';
+
+    // app/Models/Patient.php
+
+    public function getAgeAttribute()
+    {
+        // التحقق من وجود تاريخ الميلاد
+        if (is_null($this->date_of_birth)) {
+            return '—';
+        }
+
+        // إنشاء كائن Carbon من تاريخ الميلاد
+        $birthDate = \Carbon\Carbon::parse($this->date_of_birth);
+
+        // حساب الفرق بين تاريخ الميلاد والتاريخ الحالي بالسنوات
+        $age = $birthDate->diffInYears(\Carbon\Carbon::now());
+
+        // إرجاع العمر كرقم صحيح (integer)
+        return intval($age);
     }
 
-    // إنشاء كائن Carbon من تاريخ الميلاد
-    $birthDate = \Carbon\Carbon::parse($this->date_of_birth);
-
-    // حساب الفرق بين تاريخ الميلاد والتاريخ الحالي بالسنوات
-    $age = $birthDate->diffInYears(\Carbon\Carbon::now());
-
-    // إرجاع العمر كرقم صحيح (integer)
-    return intval($age);
-}
+    
 }

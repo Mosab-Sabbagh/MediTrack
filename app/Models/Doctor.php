@@ -32,4 +32,11 @@ class Doctor extends Model
     {
         return $this->hasManyThrough(Medicine::class, MedicinePatient::class, 'doctor_id', 'id', 'id', 'medicine_id');
     }
+
+    // في Patient model
+public function medicationDoctors()
+{
+    return $this->belongsToMany(User::class, 'medicine_patient', 'patient_id', 'doctor_id');
+}
+
 }
