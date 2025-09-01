@@ -39,7 +39,7 @@
                         <option value="doctor" {{ old('user_type') == 'doctor' ? 'selected' : '' }}>طبيب</option>
                         <option value="pharmaceutical" {{ old('user_type') == 'pharmaceutical' ? 'selected' : '' }}>صيدلي
                         </option>
-                        <option value="sick" {{ old('user_type') == 'sick' ? 'selected' : '' }}>مريض</option>
+                        {{-- <option value="sick" {{ old('user_type') == 'sick' ? 'selected' : '' }}>مريض</option> --}}
                     </select>
                 </div>
 

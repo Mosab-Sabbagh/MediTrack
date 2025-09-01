@@ -12,18 +12,51 @@
 				<li class="nav-item ms-3 p-4"><a class="nav-link" href="{{route('sections')}}">الأقسام</a></li>
 				<li class="nav-item ms-3 p-4"><a class="nav-link" href="{{route('connect_us')}}">تواصل معنا</a></li>
 			</ul>
-			<div class="d-flex">
-				<div class="dropdown">
-					<button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
-						aria-expanded="false">
-						تسجيل الدخول
-					</button>
-					<ul class="dropdown-menu">
-						<li><a class="dropdown-item" href="{{route('login')}}">تسجيل الدخول</a></li>
-						<li><a class="dropdown-item" href="{{route('register')}}">إنشاء حساب</a></li>
-					</ul>
+			@auth
+				<div class="d-flex">
+					<div class="dropdown">
+						<button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							{{Auth::user()->name}}
+						</button>
+						<ul class="dropdown-menu">
+							{{-- زر تسجيل خروج --}}
+							<li>
+								<form action="{{ route('logout') }}" method="POST" class="d-inline">
+									@csrf
+									<button type="submit" class="dropdown-item">تسجيل خروج</button>
+								</form>
+							</li>
+
+							{{-- عرض زر الدخول للوحة حسب نوع المستخدم --}}
+							@if(Auth::user()->user_type === 'doctor')
+								<li><a class="dropdown-item" href="{{ route('doctor.index') }}">لوحة الطبيب</a></li>
+							@elseif(Auth::user()->user_type === 'sick')
+								<li><a class="dropdown-item" href="{{ route('sick') }}">ملفي</a></li>
+							@elseif(Auth::user()->user_type === 'pharmaceutical')
+								<li><a class="dropdown-item" href="{{ route('pharmaceutical') }}">لوحة الصيدلاني</a></li>
+							@endif
+						</ul>
+					</div>
 				</div>
-			</div>
+
+			@endauth
+
+			@guest
+				<div class="d-flex">
+					<div class="dropdown">
+						<button class="btn dropdown-toggle style_btn" type="button" data-bs-toggle="dropdown"
+							aria-expanded="false">
+							تسجيل الدخول
+						</button>
+						<ul class="dropdown-menu">
+							<li><a class="dropdown-item" href="{{route('register')}}">إنشاء حساب</a></li>
+							<li><a class="dropdown-item" href="{{route('login')}}">تسجيل الدخول</a></li>
+						</ul>
+					</div>
+				</div>
+			@endguest
+
 		</div>
 	</div>
 </nav>
