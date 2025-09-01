@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\AuthenticatedController;
 use App\Http\Controllers\DoctorController;
 use App\Http\Controllers\MedicineController;
-
+use App\Http\Controllers\Auth\PasswordResetController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -95,3 +95,12 @@ Route::post('/doctor/patients/{patient}/prescribe', [DoctorController::class, 'p
 
 
 Route::resource('doctor', DoctorController::class)->middleware(['auth','doctor']);
+
+
+
+
+Route::get('/password/reset', [PasswordResetController::class, 'showRequestForm'])->name('password.request');  
+Route::post('/password/email', [PasswordResetController::class, 'sendResetLink'])->name('password.email');  
+
+Route::get('/password/reset/{token}', [PasswordResetController::class, 'showResetForm'])->name('password.reset');  
+Route::post('/password/reset', [PasswordResetController::class, 'resetPassword'])->name('password.update');

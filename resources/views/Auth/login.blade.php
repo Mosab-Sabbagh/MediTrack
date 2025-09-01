@@ -41,7 +41,7 @@
                 </div>
 
                 <div class="mb-3 text-end">
-                    <a href="reset.html" class="text-danger small">هل نسيت كلمة المرور؟</a>
+                    <a href="{{route('password.request')}}" class="text-danger small">هل نسيت كلمة المرور؟</a>
                 </div>
 
                 {{-- لو في خطأ عام (مثلاً بيانات الدخول غلط) --}}
