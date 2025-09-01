@@ -19,14 +19,32 @@ class RegisteredUserController extends Controller
     {
         // dd( $request->all());
         // Validate the incoming request data
+
         $request->validate([
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:' . User::class],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
             'user_type' => ['required', 'in:doctor,sick,pharmaceutical'],
         ], [
-            'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقين'
+            'name.required' => 'حقل الاسم مطلوب.',
+            'name.string' => 'الاسم يجب أن يكون نصًا.',
+            'name.max' => 'يجب ألا يتجاوز الاسم 255 حرفًا.',
+
+            'email.required' => 'حقل البريد الإلكتروني مطلوب.',
+            'email.string' => 'البريد الإلكتروني يجب أن يكون نصًا.',
+            'email.email' => 'صيغة البريد الإلكتروني غير صحيحة.',
+            'email.max' => 'يجب ألا يتجاوز البريد الإلكتروني 255 حرفًا.',
+            'email.unique' => 'البريد الإلكتروني مُسجل بالفعل.',
+
+            'password.required' => 'حقل كلمة المرور مطلوب.',
+            'password.string' => 'كلمة المرور يجب أن تكون نصًا.',
+            'password.min' => 'يجب أن لا تقل كلمة المرور عن 8 أحرف.',
+            'password.confirmed' => 'كلمة المرور وتأكيدها غير متطابقين.',
+
+            'user_type.required' => 'حقل نوع المستخدم مطلوب.',
+            'user_type.in' => 'قيمة نوع المستخدم غير صالحة.'
         ]);
+
 
         // Create a new user instance
         $user = User::create([

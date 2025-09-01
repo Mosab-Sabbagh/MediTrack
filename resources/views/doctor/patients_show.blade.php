@@ -57,8 +57,6 @@
                 <thead>
                     <tr>
                         <th>الدواء</th>
-                        <th>الجرعة</th>
-                        <th>المدة</th>
                         <th>تاريخ الوصفة</th>
                         <th>الطبيب الواصف</th>
                         <th>ملاحظات</th>
@@ -69,10 +67,8 @@
                         @php $prescriber = $prescribers[$med->pivot->doctor_id] ?? null; @endphp
                         <tr>
                             <td>{{ $med->name }}</td>
-                            <td>{{ $med->pivot->dosage ?? '—' }}</td>
-                            <td>{{ $med->pivot->duration ?? '—' }}</td>
-                            <td>{{ $med->pivot->prescribed_date ?? '—' }}</td>
-                                    <td>{{ $prescriber?->user?->name ?? Auth::user()->name}}</td>
+                            <td>{{ $med->pivot->created_at->format('d-m-Y') ?? '—' }}</td>
+                            <td>{{ $prescriber?->user?->name ?? Auth::user()->name}}</td>
 
                             <td>{{ $med->pivot->notes ?? '—' }}</td>
                         </tr>
