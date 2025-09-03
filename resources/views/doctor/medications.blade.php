@@ -86,6 +86,9 @@
                     </tbody>
                 </table>
             </div>
+            @if($medicines->hasPages())
+                <div class="card-footer">{{ $medicines->links() }}</div>
+            @endif
         </div>
     </section>
 @endsection

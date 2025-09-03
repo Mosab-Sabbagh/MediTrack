@@ -34,9 +34,9 @@ class Doctor extends Model
     }
 
     // في Patient model
-public function medicationDoctors()
-{
-    return $this->belongsToMany(User::class, 'medicine_patient', 'patient_id', 'doctor_id');
-}
+    public function medicationDoctors()
+    {
+        return $this->belongsToMany(User::class, 'medicine_patient', 'patient_id', 'doctor_id');
+    }
 
 }
