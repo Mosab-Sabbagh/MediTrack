@@ -70,7 +70,7 @@
                         </tr>
                     </thead>
                     <tbody>
-
+                        
                         @forelse ($medicines as $medicine)
                             <tr>
                                 <td>{{$medicine->name}}</td>

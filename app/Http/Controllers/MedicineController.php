@@ -17,6 +17,7 @@ class MedicineController extends Controller
         return view('pharmaceutical.index');
     }
 
+    // ترجع الادوية 
     public function medications(Request $request)
     {
         $query = $request->input('search');

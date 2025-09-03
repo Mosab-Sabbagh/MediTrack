@@ -30,7 +30,7 @@ class DoctorController extends Controller
         if ($query) {
             $medicines = Medicine::where('name', 'LIKE', '%' . $query . '%')->get();
         } else {
-            $medicines = Medicine::all();
+            $medicines = Medicine::paginate(10);
         }
         return view('doctor.medications', compact('medicines'));
     }
@@ -48,7 +48,7 @@ class DoctorController extends Controller
                     ->orWhere('phone', 'like', "%{$q}%");
             })
             ->latest()
-            ->paginate(12)
+            ->paginate(10)
             ->withQueryString();
 
         return view('doctor.patients', compact('patients', 'q'));
